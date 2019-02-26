@@ -7,6 +7,9 @@ package io.remicro.saga.entities;
 import io.remicro.saga.entities.tables.Databasechangelog;
 import io.remicro.saga.entities.tables.Databasechangeloglock;
 import io.remicro.saga.entities.tables.Person;
+import io.remicro.saga.entities.tables.Saga;
+import io.remicro.saga.entities.tables.Screen;
+import io.remicro.saga.entities.tables.Scroll;
 
 import javax.annotation.Generated;
 
@@ -38,4 +41,19 @@ public class Tables {
      * The table <code>public.person</code>.
      */
     public static final Person PERSON = io.remicro.saga.entities.tables.Person.PERSON;
+
+    /**
+     * The table <code>public.saga</code>.
+     */
+    public static final Saga SAGA = io.remicro.saga.entities.tables.Saga.SAGA;
+
+    /**
+     * The table <code>public.screen</code>.
+     */
+    public static final Screen SCREEN = io.remicro.saga.entities.tables.Screen.SCREEN;
+
+    /**
+     * The table <code>public.scroll</code>.
+     */
+    public static final Scroll SCROLL = io.remicro.saga.entities.tables.Scroll.SCROLL;
 }

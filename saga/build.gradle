@@ -102,7 +102,9 @@ dependencies {
     compile "io.vertx:vertx-core:$vertx_version"
     compile "io.vertx:vertx-ignite:$vertx_version"
     compile "io.vertx:vertx-web:$vertx_version"
+    compile "io.vertx:vertx-auth-jwt:$vertx_version"
     compile "io.vertx:vertx-lang-kotlin-coroutines:$vertx_version"
+    
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
 
     compile "io.reactiverse:reactive-pg-client:$reactive_pg_client_version"

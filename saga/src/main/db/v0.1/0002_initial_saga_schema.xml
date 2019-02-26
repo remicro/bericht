@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="2" author="mr.blade" context="migrate">
+        <createTable tableName="saga">
+            <column name="id" type="UUID" defaultValue="${uuid_function}">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="title" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+            <column name="owner_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_saga_owner_person" references="person(id)" />
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="scroll">
+            <column name="id" type="UUID" defaultValue="${uuid_function}">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="title" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+            <column name="desc" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+            <column name="vision" type="INT" defaultValue="0" />
+            <column name="saga_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_saga_scroll" references="saga(id)" />
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="screen">
+            <column name="id" type="UUID" defaultValue="${uuid_function}">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="owner_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_saga_owner_person" references="person(id)" />
+            </column>
+            <column name="original" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+            <column name="scaled" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValue="NOW()">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

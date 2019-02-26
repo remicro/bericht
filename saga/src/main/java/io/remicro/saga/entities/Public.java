@@ -7,6 +7,9 @@ package io.remicro.saga.entities;
 import io.remicro.saga.entities.tables.Databasechangelog;
 import io.remicro.saga.entities.tables.Databasechangeloglock;
 import io.remicro.saga.entities.tables.Person;
+import io.remicro.saga.entities.tables.Saga;
+import io.remicro.saga.entities.tables.Screen;
+import io.remicro.saga.entities.tables.Scroll;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +35,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = -1619822598;
+    private static final long serialVersionUID = 1784210382;
 
     /**
      * The reference instance of <code>public</code>
@@ -53,6 +56,21 @@ public class Public extends SchemaImpl {
      * The table <code>public.person</code>.
      */
     public final Person PERSON = io.remicro.saga.entities.tables.Person.PERSON;
+
+    /**
+     * The table <code>public.saga</code>.
+     */
+    public final Saga SAGA = io.remicro.saga.entities.tables.Saga.SAGA;
+
+    /**
+     * The table <code>public.screen</code>.
+     */
+    public final Screen SCREEN = io.remicro.saga.entities.tables.Screen.SCREEN;
+
+    /**
+     * The table <code>public.scroll</code>.
+     */
+    public final Scroll SCROLL = io.remicro.saga.entities.tables.Scroll.SCROLL;
 
     /**
      * No further instances allowed
@@ -81,6 +99,9 @@ public class Public extends SchemaImpl {
         return Arrays.<Table<?>>asList(
             Databasechangelog.DATABASECHANGELOG,
             Databasechangeloglock.DATABASECHANGELOGLOCK,
-            Person.PERSON);
+            Person.PERSON,
+            Saga.SAGA,
+            Screen.SCREEN,
+            Scroll.SCROLL);
     }
 }

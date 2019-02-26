@@ -6,6 +6,9 @@ package io.remicro.saga.entities;
 
 import io.remicro.saga.entities.tables.Databasechangeloglock;
 import io.remicro.saga.entities.tables.Person;
+import io.remicro.saga.entities.tables.Saga;
+import io.remicro.saga.entities.tables.Screen;
+import io.remicro.saga.entities.tables.Scroll;
 
 import javax.annotation.Generated;
 
@@ -35,6 +38,9 @@ public class Indexes {
     public static final Index PERSON_NICK_NAME_KEY = Indexes0.PERSON_NICK_NAME_KEY;
     public static final Index PERSON_PKEY = Indexes0.PERSON_PKEY;
     public static final Index PERSON_USER_ID_KEY = Indexes0.PERSON_USER_ID_KEY;
+    public static final Index SAGA_PKEY = Indexes0.SAGA_PKEY;
+    public static final Index SCREEN_PKEY = Indexes0.SCREEN_PKEY;
+    public static final Index SCROLL_PKEY = Indexes0.SCROLL_PKEY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -45,5 +51,8 @@ public class Indexes {
         public static Index PERSON_NICK_NAME_KEY = Internal.createIndex("person_nick_name_key", Person.PERSON, new OrderField[] { Person.PERSON.NICK_NAME }, true);
         public static Index PERSON_PKEY = Internal.createIndex("person_pkey", Person.PERSON, new OrderField[] { Person.PERSON.ID }, true);
         public static Index PERSON_USER_ID_KEY = Internal.createIndex("person_user_id_key", Person.PERSON, new OrderField[] { Person.PERSON.USER_ID }, true);
+        public static Index SAGA_PKEY = Internal.createIndex("saga_pkey", Saga.SAGA, new OrderField[] { Saga.SAGA.ID }, true);
+        public static Index SCREEN_PKEY = Internal.createIndex("screen_pkey", Screen.SCREEN, new OrderField[] { Screen.SCREEN.ID }, true);
+        public static Index SCROLL_PKEY = Internal.createIndex("scroll_pkey", Scroll.SCROLL, new OrderField[] { Scroll.SCROLL.ID }, true);
     }
 }

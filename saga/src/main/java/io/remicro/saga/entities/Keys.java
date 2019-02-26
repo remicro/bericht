@@ -6,11 +6,18 @@ package io.remicro.saga.entities;
 
 import io.remicro.saga.entities.tables.Databasechangeloglock;
 import io.remicro.saga.entities.tables.Person;
+import io.remicro.saga.entities.tables.Saga;
+import io.remicro.saga.entities.tables.Screen;
+import io.remicro.saga.entities.tables.Scroll;
 import io.remicro.saga.entities.tables.records.DatabasechangeloglockRecord;
 import io.remicro.saga.entities.tables.records.PersonRecord;
+import io.remicro.saga.entities.tables.records.SagaRecord;
+import io.remicro.saga.entities.tables.records.ScreenRecord;
+import io.remicro.saga.entities.tables.records.ScrollRecord;
 
 import javax.annotation.Generated;
 
+import org.jooq.ForeignKey;
 import org.jooq.UniqueKey;
 import org.jooq.impl.Internal;
 
@@ -42,11 +49,17 @@ public class Keys {
     public static final UniqueKey<PersonRecord> PERSON_PKEY = UniqueKeys0.PERSON_PKEY;
     public static final UniqueKey<PersonRecord> PERSON_NICK_NAME_KEY = UniqueKeys0.PERSON_NICK_NAME_KEY;
     public static final UniqueKey<PersonRecord> PERSON_USER_ID_KEY = UniqueKeys0.PERSON_USER_ID_KEY;
+    public static final UniqueKey<SagaRecord> SAGA_PKEY = UniqueKeys0.SAGA_PKEY;
+    public static final UniqueKey<ScreenRecord> SCREEN_PKEY = UniqueKeys0.SCREEN_PKEY;
+    public static final UniqueKey<ScrollRecord> SCROLL_PKEY = UniqueKeys0.SCROLL_PKEY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final ForeignKey<SagaRecord, PersonRecord> SAGA__FK_SAGA_OWNER_PERSON = ForeignKeys0.SAGA__FK_SAGA_OWNER_PERSON;
+    public static final ForeignKey<ScreenRecord, PersonRecord> SCREEN__FK_SAGA_OWNER_PERSON = ForeignKeys0.SCREEN__FK_SAGA_OWNER_PERSON;
+    public static final ForeignKey<ScrollRecord, SagaRecord> SCROLL__FK_SAGA_SCROLL = ForeignKeys0.SCROLL__FK_SAGA_SCROLL;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -57,5 +70,14 @@ public class Keys {
         public static final UniqueKey<PersonRecord> PERSON_PKEY = Internal.createUniqueKey(Person.PERSON, "person_pkey", Person.PERSON.ID);
         public static final UniqueKey<PersonRecord> PERSON_NICK_NAME_KEY = Internal.createUniqueKey(Person.PERSON, "person_nick_name_key", Person.PERSON.NICK_NAME);
         public static final UniqueKey<PersonRecord> PERSON_USER_ID_KEY = Internal.createUniqueKey(Person.PERSON, "person_user_id_key", Person.PERSON.USER_ID);
+        public static final UniqueKey<SagaRecord> SAGA_PKEY = Internal.createUniqueKey(Saga.SAGA, "saga_pkey", Saga.SAGA.ID);
+        public static final UniqueKey<ScreenRecord> SCREEN_PKEY = Internal.createUniqueKey(Screen.SCREEN, "screen_pkey", Screen.SCREEN.ID);
+        public static final UniqueKey<ScrollRecord> SCROLL_PKEY = Internal.createUniqueKey(Scroll.SCROLL, "scroll_pkey", Scroll.SCROLL.ID);
+    }
+
+    private static class ForeignKeys0 {
+        public static final ForeignKey<SagaRecord, PersonRecord> SAGA__FK_SAGA_OWNER_PERSON = Internal.createForeignKey(io.remicro.saga.entities.Keys.PERSON_PKEY, Saga.SAGA, "saga__fk_saga_owner_person", Saga.SAGA.OWNER_ID);
+        public static final ForeignKey<ScreenRecord, PersonRecord> SCREEN__FK_SAGA_OWNER_PERSON = Internal.createForeignKey(io.remicro.saga.entities.Keys.PERSON_PKEY, Screen.SCREEN, "screen__fk_saga_owner_person", Screen.SCREEN.OWNER_ID);
+        public static final ForeignKey<ScrollRecord, SagaRecord> SCROLL__FK_SAGA_SCROLL = Internal.createForeignKey(io.remicro.saga.entities.Keys.SAGA_PKEY, Scroll.SCROLL, "scroll__fk_saga_scroll", Scroll.SCROLL.SAGA_ID);
     }
 }

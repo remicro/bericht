@@ -26,8 +26,7 @@ class WhoAmMeController(
     }
 }
 
-private fun HttpServerResponse.putHeader(contentType: Header, json: ContentType): HttpServerResponse {
+ fun HttpServerResponse.putHeader(contentType: Header, json: ContentType): HttpServerResponse {
     putHeader(contentType.value, json.value)
     return this
 }
-
